@@ -1,11 +1,20 @@
 <html>
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.8/angular.min.js"></script>
+
+<style>
+	canvas { border: 1px solid black; }
+</style>
 	<body>
 		<div ng-app="myApp" ng-controller="testCtrl">
-			First Name: <input type="text" ng-model="firstName"><br>
-			Last Name: <input type="text" ng-model="lastName"><br>
+			<select id="dropdown-areatype" ng-model="areaType">
+				<option ng-repeat="shape in areaTypeShapes">{{shape}}</option>
+			</select>
+			<input type="text" id="spellRadius" ng-visible="true" ng-model="spellRadius" placeholder="Enter area radius"></input>
+			<input type="text" id="spellRange" ng-visible="true" ng-model="spellRange" placeholder="Enter range"></input>
+			<input type="text" id="spellWidth" ng-visible="true" ng-model="spellWidth" placeholder="Enter area width"></input>
+			<input type="button" value="draw()" ng-click="drawing()"></input>
 			<br>
-			Full Name: {{firstName + " " + lastName}}		
+			<canvas id="tutorial" width="200" height="200"></canvas>
 		</div>
 	</body>
 	<script src="/src/controller.js"></script>
